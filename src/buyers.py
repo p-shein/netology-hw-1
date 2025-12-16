@@ -9,13 +9,13 @@ class Buyer:
     device_type: str
     browser: str
     sex: str
-    age: int
-    bill: float
+    age: str
+    bill: str
     region: str
 
     # Пользователь Allen Miss. Elisabeth Walton женского пола, 29 лет совершила покупку на 885 у.е. с мобильного браузера Chrome. Регион, из которого совершалась покупка: St Louis: MO.
     def get_report(self):
-        return (f"Пользователь {self.name} {self.get_gender_string()}, {self.age} {self.get_age_string()}, "
+        return (f"Пользователь {self.name} {self.get_gender_string()}, {self.age} {self.get_age_string()} "
                 f"совершил{self.get_action_ending()} покупку на сумму {self.bill} у.е. c {self.get_device_string()}. "
                 f"Регион, из которого совершалась покупка: {self.region}")
 
@@ -23,9 +23,8 @@ class Buyer:
         return "женского пола" if self.sex == "female" else "мужского пола"
 
     def get_age_string(self):
-        age = float(self.age)
-        if age < 1:
-            return 'лет'
+        if float(self.age) < 1:
+            return 'года'
         rem = int(self.age) % 10
 
         if rem == 0 or (5 <= rem <= 9):
